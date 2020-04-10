@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import DemoBar from './demobar';
 import FormBuilder from './src/index';
 import * as variables from './variables';
+import UiExtension from '@bloomreach/ui-extension';
 // import { get, post} from './src/stores/requests';
 // Add our stylesheets for the demo.
 require('./scss/application.scss');
@@ -139,24 +140,28 @@ const saveUrl = '/api/formdata';
 //     options: [],
 //   },
 // ];
+UiExtension.register().then((ui) => {
 
-ReactDOM.render(
-  <FormBuilder.ReactFormBuilder variables={variables}
-    url={url}
-    saveUrl={saveUrl}
-  />,
-  document.getElementById('form-builder'),
-);
+  ReactDOM.render(
+    <FormBuilder.ReactFormBuilder variables={variables}
+      url={url}
+      saveUrl={saveUrl}
+    />,
+    document.getElementById('form-builder'),
+  );
 
-// ReactDOM.render(
-//   <FormBuilder.ReactFormBuilder variables={variables}
-//     onLoad={onLoad}
-//     onPost={onPost}
-//   />,
-//   document.getElementById('form-builder')
-// )
 
-ReactDOM.render(
-  <DemoBar variables={variables} />,
-  document.getElementById('demo-bar'),
-);
+  // ReactDOM.render(
+  //   <FormBuilder.ReactFormBuilder variables={variables}
+  //     onLoad={onLoad}
+  //     onPost={onPost}
+  //   />,
+  //   document.getElementById('form-builder')
+  // )
+
+  ReactDOM.render(
+    <DemoBar variables={variables} />,
+    document.getElementById('demo-bar'),
+  );
+});
+
